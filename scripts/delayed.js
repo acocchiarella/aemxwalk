@@ -1,5 +1,3 @@
-/* Adobe Target – Edge Delivery safe */
-
 function alloyQueue(...args) {
   (window.alloy.q = window.alloy.q || []).push(args);
 }
@@ -13,13 +11,16 @@ window.addEventListener('load', () => {
 
   s.onload = () => {
     window.alloy('configure', {
-      edgeConfigId: '78186df0-137a-4df7-9ba5-831a9a646847',
+      datastreamId: '78186df0-137a-4df7-9ba5-831a9a646847',
       orgId: 'O8F361935D7FA1A0A495FCF@AdobeOrg',
+      defaultConsent: 'in'
     });
 
     window.alloy('sendEvent', {
-      decisionScopes: ['__view__'],
       renderDecisions: true,
+      personalization: {
+        decisionScopes: ['__view__']
+      }
     });
   };
 
