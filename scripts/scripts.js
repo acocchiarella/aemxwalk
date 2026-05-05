@@ -13,27 +13,22 @@ import {
   loadCSS,
 } from './aem.js';
 
-// --- Adobe Web SDK (Target) ---
-
-// ✅ REQUIRED STUB (this is what you were missing)
+// ✅ REQUIRED: Web SDK stub (TOP‑LEVEL)
 window.alloy = window.alloy || function () {
   (window.alloy.q = window.alloy.q || []).push(arguments);
 };
-
 function initAdobeWebSDK() {
   const script = document.createElement('script');
   script.src = 'https://cdn1.adoberesources.net/alloy/2.14.0/alloy.min.js';
   script.async = true;
 
   script.onload = () => {
-    // ✅ Configure Web SDK
     window.alloy('configure', {
       edgeConfigId: '78186df0-137a-4df7-9ba5-831a9a646847',
       orgId: 'O8F361935D7FA1A0A495FCF@AdobeOrg',
       debugEnabled: true,
     });
 
-    // ✅ Trigger Target decisioning
     window.alloy('sendEvent', {
       renderDecisions: true,
     });
