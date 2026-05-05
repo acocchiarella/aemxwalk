@@ -12,21 +12,18 @@ import {
   loadSections,
   loadCSS,
 } from './aem.js';
-/* === Adobe Web SDK bootstrap (DEBUG SAFE) === */
+/* === Adobe Web SDK bootstrap === */
 
-// MUST be top‑level
-window.alloy = function () {
-  (window.alloy.q = window.alloy.q || []).push(arguments);
+// MUST be standalone (no imports)
+window.alloy = function (...args) {
+  (window.alloy.q = window.alloy.q || []).push(args);
 };
 
-// Load SDK
 const alloyScript = document.createElement('script');
 alloyScript.src = 'https://cdn1.adoberesources.net/alloy/2.14.0/alloy.min.js';
 alloyScript.async = true;
 
 alloyScript.onload = () => {
-  console.log('[WebSDK] loaded');
-
   window.alloy('configure', {
     edgeConfigId: '78186df0-137a-4df7-9ba5-831a9a646847',
     orgId: 'O8F361935D7FA1A0A495FCF@AdobeOrg',
@@ -37,8 +34,6 @@ alloyScript.onload = () => {
     decisionScopes: ['__view__'],
     renderDecisions: true,
   });
-
-  console.log('[WebSDK] sendEvent fired');
 };
 
 document.head.appendChild(alloyScript);
