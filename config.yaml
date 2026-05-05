@@ -1,0 +1,5 @@
+security:
+  allowedHosts:
+    - edge.adobedc.net
+    - cdn.adoberesources.net
+    - cdn1.adoberesources.net
