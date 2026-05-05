@@ -13,6 +13,32 @@ import {
   loadCSS,
 } from './aem.js';
 
+// --- Adobe Web SDK (Target) ---
+function initAdobeWebSDK() {
+  // Avoid double‑initialisation
+  if (window.alloy) return;
+
+  const script = document.createElement('script');
+  script.src = 'https://cdn1.adoberesources.net/alloy/latest/alloy.min.js';
+  script.async = true;
+
+  script.onload = () => {
+    window.alloy('configure', {
+      edgeConfigId: '78186df0-137a-4df7-9ba5-831a9a646847',
+      orgId: '08F361935DF7A1A10A495FCF@AdobeOrg',
+      debugEnabled: true,
+    });
+
+    window.alloy('sendEvent', {
+      renderDecisions: true,
+    });
+  };
+
+  document.head.appendChild(script);
+}
+
+initAdobeWebSDK();
+
 /**
  * Moves all the attributes from a given elmenet to another given element.
  * @param {Element} from the element to copy attributes from
