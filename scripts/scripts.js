@@ -12,6 +12,7 @@ import {
   loadSections,
   loadCSS,
 } from './aem.js';
+
 function alloyQueue(...args) {
   (window.alloy.q = window.alloy.q || []).push(args);
 }
