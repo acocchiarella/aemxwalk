@@ -14,21 +14,26 @@ import {
 } from './aem.js';
 
 // --- Adobe Web SDK (Target) ---
-function initAdobeWebSDK() {
-  // Avoid double‑initialisation
-  if (window.alloy) return;
 
+// ✅ REQUIRED STUB (this is what you were missing)
+window.alloy = window.alloy || function () {
+  (window.alloy.q = window.alloy.q || []).push(arguments);
+};
+
+function initAdobeWebSDK() {
   const script = document.createElement('script');
   script.src = 'https://cdn1.adoberesources.net/alloy/2.14.0/alloy.min.js';
   script.async = true;
 
   script.onload = () => {
+    // ✅ Configure Web SDK
     window.alloy('configure', {
       edgeConfigId: '78186df0-137a-4df7-9ba5-831a9a646847',
-      orgId: '08F361935DF7A1A10A495FCF@AdobeOrg',
+      orgId: 'O8F361935D7FA1A0A495FCF@AdobeOrg',
       debugEnabled: true,
     });
 
+    // ✅ Trigger Target decisioning
     window.alloy('sendEvent', {
       renderDecisions: true,
     });
@@ -38,7 +43,6 @@ function initAdobeWebSDK() {
 }
 
 initAdobeWebSDK();
-
 /**
  * Moves all the attributes from a given elmenet to another given element.
  * @param {Element} from the element to copy attributes from
