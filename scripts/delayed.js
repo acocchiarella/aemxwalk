@@ -11,7 +11,7 @@ s.async = true;
 s.onload = function initAlloy() {
   window.alloy('configure', {
     datastreamId: '78186df0-137a-4df7-9ba5-831a9a646847',
-    orgId: 'O8F361935D7FA1A0A495FCF@AdobeOrg',
+    orgId: '08F361935DF7A1A10A495FCF@AdobeOrg',
     defaultConsent: 'in',
   });
 
