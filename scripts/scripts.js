@@ -19,7 +19,7 @@ function initAdobeWebSDK() {
   if (window.alloy) return;
 
   const script = document.createElement('script');
-  script.src = 'https://cdn1.adoberesources.net/alloy/2/latest/alloy.min.js';
+  script.src = 'https://cdn1.adoberesources.net/alloy/2.14.0/alloy.min.js';
   script.async = true;
 
   script.onload = () => {
