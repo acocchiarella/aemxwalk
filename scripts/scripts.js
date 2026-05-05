@@ -30,8 +30,9 @@ function initAdobeWebSDK() {
     });
 
     window.alloy('sendEvent', {
-      renderDecisions: true,
-    });
+  renderDecisions: true,
+  decisionScopes: ['__view__'],
+});
   };
 
   document.head.appendChild(script);
