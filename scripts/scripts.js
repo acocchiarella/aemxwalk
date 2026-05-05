@@ -12,33 +12,39 @@ import {
   loadSections,
   loadCSS,
 } from './aem.js';
+/* === Adobe Web SDK bootstrap (DEBUG SAFE) === */
 
-// ✅ REQUIRED: Web SDK stub (TOP‑LEVEL)
-window.alloy = window.alloy || function () {
+// MUST be top‑level
+window.alloy = function () {
   (window.alloy.q = window.alloy.q || []).push(arguments);
 };
-function initAdobeWebSDK() {
-  const script = document.createElement('script');
-  script.src = 'https://cdn1.adoberesources.net/alloy/2.14.0/alloy.min.js';
-  script.async = true;
 
-  script.onload = () => {
-    window.alloy('configure', {
-      edgeConfigId: '78186df0-137a-4df7-9ba5-831a9a646847',
-      orgId: 'O8F361935D7FA1A0A495FCF@AdobeOrg',
-      debugEnabled: true,
-    });
+// Load SDK
+const alloyScript = document.createElement('script');
+alloyScript.src = 'https://cdn1.adoberesources.net/alloy/2.14.0/alloy.min.js';
+alloyScript.async = true;
 
-    window.alloy('sendEvent', {
-  renderDecisions: true,
-  decisionScopes: ['__view__'],
-});
-  };
+alloyScript.onload = () => {
+  console.log('[WebSDK] loaded');
 
-  document.head.appendChild(script);
-}
+  window.alloy('configure', {
+    edgeConfigId: '78186df0-137a-4df7-9ba5-831a9a646847',
+    orgId: 'O8F361935D7FA1A0A495FCF@AdobeOrg',
+    debugEnabled: true,
+  });
 
-initAdobeWebSDK();
+  window.alloy('sendEvent', {
+    decisionScopes: ['__view__'],
+    renderDecisions: true,
+  });
+
+  console.log('[WebSDK] sendEvent fired');
+};
+
+document.head.appendChild(alloyScript);
+
+// ✅ REQUIRED: Web SDK stub (TOP‑LEVEL)
+
 /**
  * Moves all the attributes from a given elmenet to another given element.
  * @param {Element} from the element to copy attributes from
