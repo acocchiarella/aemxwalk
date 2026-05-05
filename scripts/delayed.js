@@ -13,14 +13,14 @@ window.addEventListener('load', () => {
     window.alloy('configure', {
       datastreamId: '78186df0-137a-4df7-9ba5-831a9a646847',
       orgId: 'O8F361935D7FA1A0A495FCF@AdobeOrg',
-      defaultConsent: 'in'
+      defaultConsent: 'in', // ✅ comma here
     });
 
     window.alloy('sendEvent', {
       renderDecisions: true,
       personalization: {
-        decisionScopes: ['__view__']
-      }
+        decisionScopes: ['__view__'], // ✅ comma safe
+      },
     });
   };
 
