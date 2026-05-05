@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Alloy Test</title>
+
+  <script src="https://cdn1.adoberesources.net/alloy/2.14.0/alloy.min.js"></script>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    alloy("configure", {
+      datastreamId: "78186df0-137a-4df7-9ba5-831a9a646847",
+      orgId: "O8F361935D7FA1A0A495FCF@AdobeOrg",
+      defaultConsent: "in"
+    });
+
+    alloy("sendEvent", {
+      renderDecisions: true
+    });
+
+    console.log("Alloy test fired");
+  });
+</script>
+
+</head>
+
+<body>
+  <h1>Alloy Test Page</h1>
+  <p>If this works, you will see an interact call.</p>
+</body>
+</html>
