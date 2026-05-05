@@ -1,23 +1,11 @@
-import {
-  sampleRUM,
-  loadHeader,
-  loadFooter,
-  decorateButtons,
-  decorateIcons,
-  decorateSections,
-  decorateBlocks,
-  decorateTemplateAndTheme,
-  waitForFirstImage,
-  loadSection,
-  loadSections,
-  loadCSS,
-} from './aem.js';
 /* === Adobe Web SDK bootstrap === */
 
-// MUST be standalone (no imports)
-window.alloy = function (...args) {
+// Named function (no anonymous functions, no arguments)
+function alloyQueue(...args) {
   (window.alloy.q = window.alloy.q || []).push(args);
-};
+}
+
+window.alloy = alloyQueue;
 
 const alloyScript = document.createElement('script');
 alloyScript.src = 'https://cdn1.adoberesources.net/alloy/2.14.0/alloy.min.js';
